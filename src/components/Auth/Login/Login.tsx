@@ -1,5 +1,6 @@
 import { Container, TextField, Typography, Button, Box } from "@mui/material";
 import React, { useState } from "react";
+import { _IsValidEmail, _IsValidPass } from "../../../helpers/Validations";
 
 const Login: React.FC = () => {
   const [email, setEmail] = useState<string>("");
@@ -10,7 +11,6 @@ const Login: React.FC = () => {
   //Event 
   const handleLogin = (e: React.FormEvent) =>{
     e.preventDefault();
-    console.log("Submit");
 
     // console.log(email);
     // console.log(password);
@@ -21,8 +21,8 @@ const Login: React.FC = () => {
 
     //Set the error messages
     const errors = {
-        email: email === "" ? "Please enter valid email." : "",
-        password: password === "" ? "Plesae enter valid password." : ""
+        email: !_IsValidEmail(email) ? "Please enter valid email." : "",
+        password: !_IsValidPass(password) ? "Plesae enter valid password." : ""
     }
 
     //Login Form validations
