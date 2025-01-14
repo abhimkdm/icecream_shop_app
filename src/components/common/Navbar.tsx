@@ -12,7 +12,8 @@ export default function NavBar() {
          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             Ice Cream Shop
           </Typography>
-          <Button color="inherit">Login</Button>
+          <Button color="inherit">Login</Button> 
+          <Button color="inherit">SignUp</Button>
         </Toolbar>
       </AppBar>
     </Box>
