@@ -2,9 +2,20 @@ import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
+import { NavLink } from 'react-router-dom';
 
 export default function NavBar() {
+
+  const navStyleFn = (prop : any) => {
+    const { isActive } = prop;
+    console.log(isActive);
+
+    return {
+      textDecoration: isActive? 'none' : 'underline'
+    }
+    
+  }
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
@@ -12,8 +23,10 @@ export default function NavBar() {
          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             Ice Cream Shop
           </Typography>
-          <Button color="inherit">Login</Button> 
-          <Button color="inherit">SignUp</Button>
+          <NavLink to={'/login'} style={navStyleFn}>Login</NavLink> 
+          <NavLink to={'/signup'} style={navStyleFn}>SignUp</NavLink>
+          {/* <Link to={'/login'}>Login</Link> 
+          <Link to={'/signup'} >SignUp</Link> */}
         </Toolbar>
       </AppBar>
     </Box>

@@ -9,8 +9,8 @@ import Signup from "./components/Auth/SignUp/SignUp";
 const App: React.FC = () => {
   return (
     <>
-      <NavBar />
       <Router>
+      <NavBar />
         <Routes>
           <Route path="/" element={<Home />}></Route>
           <Route path="/login" element={<Login />}></Route>
