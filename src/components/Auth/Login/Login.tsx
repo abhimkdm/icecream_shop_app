@@ -40,7 +40,7 @@ const Login: React.FC = () => {
       <Container>
         <Box sx={{ width: 500, marginLeft: 40 }}>
         <form onSubmit={handleLogin}>
-          <Typography variant="h1">LogIn</Typography>
+          <Typography variant="h4">LogIn</Typography>
           <TextField
             id="email"
             fullWidth
