@@ -1,4 +1,5 @@
-import { Link } from "react-router-dom";
+import { Typography } from "@mui/material";
+import { Link, Outlet } from "react-router-dom";
 
 const Products: React.FC<any> = () => {
   const Products = [
@@ -15,12 +16,16 @@ const Products: React.FC<any> = () => {
           return (
             <>
               <li key={product.id}>
-                <Link to={""}>{product.name}</Link>
+                <Link to={`/products/${product.id}`}>{product.name}</Link>
               </li>
             </>
           );
         })}
       </ul>
+
+      <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+        <Outlet />
+      </Typography>
     </>
   );
 };
