@@ -5,6 +5,9 @@ import Home from "./components/Home/Home";
 import Login from "./components/Auth/Login/Login";
 import NavBar from "./components/common/Navbar";
 import Signup from "./components/Auth/SignUp/SignUp";
+import NoMatch from "./components/common/Nomatch";
+import Products from "./components/Products/Products";
+import ProductDetails from "./components/ProductDetails/ProductDetails";
 
 const App: React.FC = () => {
   return (
@@ -15,6 +18,10 @@ const App: React.FC = () => {
           <Route path="/" element={<Home />}></Route>
           <Route path="/login" element={<Login />}></Route>
           <Route path="/signup" element={<Signup />}></Route>
+          <Route path="/products" element={<Products />}>
+            <Route path=":productId" element={<ProductDetails />} /> 
+          </Route>
+          <Route path="*" element={<NoMatch />}></Route>
         </Routes>
       </Router>
     </>
@@ -31,3 +38,7 @@ export default App;
     //     <Login />
     //   </header>
     // </div>
+
+
+    // <A> <B> </B> </A> 
+    // const A =(props)=> { props.children } 
