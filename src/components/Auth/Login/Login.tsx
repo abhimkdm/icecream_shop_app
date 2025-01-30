@@ -2,6 +2,7 @@ import { Container, TextField, Typography, Button, Box } from "@mui/material";
 import React, { useState } from "react";
 import { _IsValidEmail, _IsValidPass } from "../../../helpers/Validations";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../AuthProvider/AuthProvider";
 
 const Login: React.FC = () => {
   const [email, setEmail] = useState<string>("");
@@ -9,6 +10,7 @@ const Login: React.FC = () => {
   const [emailErr, setEmailErr] = useState<string>("");
   const [passwordErr, setPasswordErr] = useState<string>("");
   const navigate = useNavigate();
+  const { login } = useAuth(); 
 
   //Event 
   const handleLogin = (e: React.FormEvent) =>{
@@ -35,7 +37,9 @@ const Login: React.FC = () => {
         return;
     }
 
+    //username and password => JWT Token 
     //Profile
+    login('login');
     navigate('/profile');
   }
 
