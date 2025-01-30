@@ -8,6 +8,7 @@ import Signup from "./components/Auth/SignUp/SignUp";
 import NoMatch from "./components/common/Nomatch";
 import Products from "./components/Products/Products";
 import ProductDetails from "./components/ProductDetails/ProductDetails";
+import Profile from "./components/Auth/Profile/Profile";
 
 const App: React.FC = () => {
   return (
@@ -21,6 +22,7 @@ const App: React.FC = () => {
           <Route path="/products" element={<Products />}>
             <Route path=":productId" element={<ProductDetails />} /> 
           </Route>
+          <Route path="/profile" element={<Profile />} />
           <Route path="*" element={<NoMatch />}></Route>
         </Routes>
       </Router>

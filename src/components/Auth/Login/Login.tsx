@@ -1,12 +1,14 @@
 import { Container, TextField, Typography, Button, Box } from "@mui/material";
 import React, { useState } from "react";
 import { _IsValidEmail, _IsValidPass } from "../../../helpers/Validations";
+import { useNavigate } from "react-router-dom";
 
 const Login: React.FC = () => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [emailErr, setEmailErr] = useState<string>("");
   const [passwordErr, setPasswordErr] = useState<string>("");
+  const navigate = useNavigate();
 
   //Event 
   const handleLogin = (e: React.FormEvent) =>{
@@ -33,6 +35,8 @@ const Login: React.FC = () => {
         return;
     }
 
+    //Profile
+    navigate('/profile');
   }
 
   return (
@@ -47,7 +51,7 @@ const Login: React.FC = () => {
             margin="normal"
             label="Email"
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={(e: any) => setEmail(e.target.value)}
             variant="outlined"
             type="text"
             error={!!emailErr}
@@ -59,7 +63,7 @@ const Login: React.FC = () => {
             margin="normal"
             label="Password"
             value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={(e : any) => setPassword(e.target.value)}
             variant="outlined"
             type="password"
             error={!!passwordErr}

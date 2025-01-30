@@ -1,7 +1,6 @@
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
-import Toolbar from "@mui/material/Toolbar";
-import Typography from "@mui/material/Typography";
+import { Toolbar, Typography } from "@mui/material";
 import { NavLink, useNavigate } from "react-router-dom";
 
 export default function NavBar() {
@@ -40,6 +39,15 @@ export default function NavBar() {
           <NavLink to={"/signup"} style={navStyleFn}>
             SignUp
           </NavLink>
+
+          <NavLink to={"/profile"} state={navStyleFn}>
+            Profile
+          </NavLink>
+          
+          <NavLink to={"/"} state={navStyleFn}>
+            Logout
+          </NavLink>
+
           {/* <Link to={'/login'}>Login</Link> 
           <Link to={'/signup'} >SignUp</Link> */}
         </Toolbar>
