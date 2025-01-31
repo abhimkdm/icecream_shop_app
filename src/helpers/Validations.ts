@@ -1,3 +1,12 @@
+//Error messages
+export const errorMessages = {
+    name: "Please enter name",
+    email: "Please enter valid email id",
+    password: "Please enter valid password",
+    confirmPassword: "Password and confirm password should be same",
+    mobileNo: "Please enter valid mobile number"
+}
+
 //Name validation
 export const _IsValidFname = (fname: string) => {
     const nameRegEx = /^[a-zA-Z]+$/;

@@ -1,9 +1,9 @@
 import { Box, Button, Container, TextField, Typography } from "@mui/material";
 import React, { useState } from "react";
-import { _IsValidEmail, _IsValidMobileNo, _IsValidPass, _IsValidConfirmPass, _IsValidFname } from "../../../helpers/Validations";
+import { _IsValidEmail, _IsValidMobileNo, _IsValidPass, _IsValidConfirmPass, _IsValidFname, errorMessages } from "../../../helpers/Validations";
 
 const Signup: React.FC = () => {
-  const [fname,setFirstName] = useState<string>("");
+  const [fname, setFirstName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [confirmPassword, setConfirmPassword] = useState<string>("");
@@ -16,31 +16,16 @@ const Signup: React.FC = () => {
 
   const handleSignUp = (e: React.FormEvent) => {
     e.preventDefault();
-    // console.log(fname);
-    //  console.log(email);
-    console.log(password);
-    console.log(confirmPassword);
-    //  console.log(mobileNo);
-    //logic
-    // Name validation
-    // Password validation
-    // Confirm Password Validation
-    // Email validation
-    // Mobile No Validation
 
-    //Rest error messages
-    setFirstNameErr("");
-    setEmailErr("");
-    setPasswordErr("");
-    setConfirmPasswordErr("");
-    setMobileNoErr("");
+    clearErrors();
+    
     //Set the error messages
     const errors = {
-      fname: !_IsValidFname(fname) ? "Please enter valid name" : "",
-      email: !_IsValidEmail(email) ? "Please enter valid email." : "",
-      password: !_IsValidPass(password) ? "Plesae enter valid password." : "",
-      confirmPassword: !_IsValidConfirmPass(password, confirmPassword) ? "Password and confirm password are not same." : "",
-      mobileNo: !_IsValidMobileNo(mobileNo) ? "Please enter a valid mobile number" : ""
+      fname: !_IsValidFname(fname) ? errorMessages.name : "",
+      email: !_IsValidEmail(email) ? errorMessages.email : "",
+      password: !_IsValidPass(password) ? errorMessages.password : "",
+      confirmPassword: !_IsValidConfirmPass(password, confirmPassword) ? errorMessages.confirmPassword : "",
+      mobileNo: !_IsValidMobileNo(mobileNo) ? errorMessages.mobileNo : ""
 
     }
 
@@ -53,9 +38,15 @@ const Signup: React.FC = () => {
       setMobileNoErr(errors.mobileNo)
       return;
     }
+  }
 
-    //Validate password and confirm password
-    
+  const clearErrors = () => {
+    //Reset error messages
+    setFirstNameErr("");
+    setEmailErr("");
+    setPasswordErr("");
+    setConfirmPasswordErr("");
+    setMobileNoErr("");
   }
 
   return (<>
