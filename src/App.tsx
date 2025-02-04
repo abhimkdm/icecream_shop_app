@@ -10,6 +10,7 @@ import Products from "./components/Products/Products";
 import ProductDetails from "./components/ProductDetails/ProductDetails";
 import Profile from "./components/Auth/Profile/Profile";
 import { AuthProvider } from "./components/Auth/AuthProvider/AuthProvider";
+import PrivateRoute from "./components/Auth/PrivateRoute/PrivateRoute";
 
 const App: React.FC = () => {
   return (
@@ -24,7 +25,9 @@ const App: React.FC = () => {
             <Route path="/products" element={<Products />}>
               <Route path=":productId" element={<ProductDetails />} />
             </Route>
-            <Route path="/profile" element={<Profile />} />
+            <Route element={<PrivateRoute />}>
+              <Route path="/profile" element={<Profile />} />
+            </Route>
             <Route path="*" element={<NoMatch />}></Route>
           </Routes>
         </Router>
