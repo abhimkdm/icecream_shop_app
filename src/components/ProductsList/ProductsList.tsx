@@ -5,7 +5,7 @@ import { RootState } from "../../store/store";
 const ProductList: React.FC = () => {
   const products = useSelector((state: RootState) => state.products.items);
 
-  console.log(products);
+  //console.log(products);
 
   return (
     <>
