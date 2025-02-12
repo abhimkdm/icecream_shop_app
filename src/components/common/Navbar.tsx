@@ -1,18 +1,20 @@
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
-import { IconButton, Toolbar, Typography } from "@mui/material";
-import { NavLink, useNavigate } from "react-router-dom";
+import { Button, IconButton, Toolbar, Typography } from "@mui/material";
+import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../Auth/AuthProvider/AuthProvider";
-import Badge, { badgeClasses } from '@mui/material/Badge';
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCartOutlined';
-import { styled } from '@mui/material/styles';
+import Badge, { badgeClasses } from "@mui/material/Badge";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCartOutlined";
+import { styled } from "@mui/material/styles";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store/store";
 
 export default function NavBar() {
   const navigate = useNavigate();
   const { isAuthenticated, logout } = useAuth();
-  const cartItemCount = useSelector((state : RootState) => state.cart.items.length);
+  const cartItemCount = useSelector(
+    (state: RootState) => state.cart.items.length
+  );
 
   const navStyleFn = (prop: any) => {
     const { isActive } = prop;
@@ -34,11 +36,11 @@ export default function NavBar() {
   };
 
   const CartBadge = styled(Badge)`
-  & .${badgeClasses.badge} {
-    top: -12px;
-    right: -6px;
-  }
-`;
+    & .${badgeClasses.badge} {
+      top: -12px;
+      right: -6px;
+    }
+  `;
 
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -56,16 +58,22 @@ export default function NavBar() {
 
           {!isAuthenticated ? (
             <>
-              <NavLink to={"/login"} style={navStyleFn}>
+              {/* <NavLink to={"/login"} style={navStyleFn}>
                 Login
               </NavLink>
               <NavLink to={"/signup"} style={navStyleFn}>
                 SignUp
-              </NavLink>
+              </NavLink> */}
+              <Button color="inherit" component={Link} to="/login">
+                Login
+              </Button>
+              <Button color="inherit" component={Link} to="/signup">
+                SignUp
+              </Button>
             </>
           ) : (
             <>
-              <IconButton onClick={()=> navigate("/cart")}>
+              <IconButton onClick={() => navigate("/cart")}>
                 <ShoppingCartIcon fontSize="small" />
                 <CartBadge
                   badgeContent={cartItemCount}
@@ -73,12 +81,16 @@ export default function NavBar() {
                   overlap="circular"
                 />
               </IconButton>
-              <NavLink to={"/profile"} state={navStyleFn}>
+              <Button color="inherit" component={Link} to="/profile">
                 Profile
-              </NavLink>
-              <Typography style={{ cursor: "pointer" }} onClick={logOut}>
+              </Button>
+              <Button color="inherit" onClick={logOut}>
                 Logout
-              </Typography>
+              </Button>
+              {/* <NavLink to={"/products"} state={navStyleFn}>
+                Products
+              </NavLink>
+               */}
             </>
           )}
 
