@@ -1,12 +1,18 @@
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
-import { Toolbar, Typography } from "@mui/material";
+import { IconButton, Toolbar, Typography } from "@mui/material";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useAuth } from "../Auth/AuthProvider/AuthProvider";
+import Badge, { badgeClasses } from '@mui/material/Badge';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCartOutlined';
+import { styled } from '@mui/material/styles';
+import { useSelector } from "react-redux";
+import { RootState } from "../../store/store";
 
 export default function NavBar() {
   const navigate = useNavigate();
   const { isAuthenticated, logout } = useAuth();
+  const cartItemCount = useSelector((state : RootState) => state.cart.items.length);
 
   const navStyleFn = (prop: any) => {
     const { isActive } = prop;
@@ -25,7 +31,14 @@ export default function NavBar() {
   const logOut = () => {
     logout();
     reDirectToHome();
+  };
+
+  const CartBadge = styled(Badge)`
+  & .${badgeClasses.badge} {
+    top: -12px;
+    right: -6px;
   }
+`;
 
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -52,6 +65,14 @@ export default function NavBar() {
             </>
           ) : (
             <>
+              <IconButton onClick={()=> navigate("/cart")}>
+                <ShoppingCartIcon fontSize="small" />
+                <CartBadge
+                  badgeContent={cartItemCount}
+                  color="primary"
+                  overlap="circular"
+                />
+              </IconButton>
               <NavLink to={"/profile"} state={navStyleFn}>
                 Profile
               </NavLink>

@@ -11,26 +11,31 @@ import ProductDetails from "./components/ProductDetails/ProductDetails";
 import Profile from "./components/Auth/Profile/Profile";
 import { AuthProvider } from "./components/Auth/AuthProvider/AuthProvider";
 import PrivateRoute from "./components/Auth/PrivateRoute/PrivateRoute";
+import { SnackbarProvider } from "notistack";
+import Cart from "./components/Cart/Cart";
 
 const App: React.FC = () => {
   return (
     <>
       <AuthProvider>
-        <Router>
-          <NavBar />
-          <Routes>
-            <Route path="/" element={<Home />}></Route>
-            <Route path="/login" element={<Login />}></Route>
-            <Route path="/signup" element={<Signup />}></Route>
-            <Route path="/products" element={<Products />}>
-              <Route path=":productId" element={<ProductDetails />} />
-            </Route>
-            <Route element={<PrivateRoute />}>
-              <Route path="/profile" element={<Profile />} />
-            </Route>
-            <Route path="*" element={<NoMatch />}></Route>
-          </Routes>
-        </Router>
+        <SnackbarProvider anchorOrigin={{ vertical: 'top', horizontal:'center'}}>
+          <Router>
+            <NavBar />
+            <Routes>
+              <Route path="/" element={<Home />}></Route>
+              <Route path="/login" element={<Login />}></Route>
+              <Route path="/signup" element={<Signup />}></Route>
+              <Route path="/products" element={<Products />}>
+                <Route path=":productId" element={<ProductDetails />} />
+              </Route>
+              <Route element={<PrivateRoute />}>
+                <Route path="/profile" element={<Profile />} />
+              </Route>
+              <Route path="*" element={<NoMatch />}></Route>
+              <Route path="/cart" element={<Cart />}></Route>
+            </Routes>
+          </Router>
+        </SnackbarProvider>
       </AuthProvider>
     </>
   );
