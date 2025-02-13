@@ -1,4 +1,4 @@
-import { Button, Card, CardContent, Typography } from "@mui/material";
+import { Button, Card, CardActionArea, CardActions, CardContent, CardMedia, Grid2, Link, Paper, styled, Typography } from "@mui/material";
 import { ProductType } from "../../types/ProductType";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "../../store/store";
@@ -9,7 +9,18 @@ interface Props {
     product: ProductType;
 }
 
-const ProductCard: React.FC<Props> =({ product })=> {
+const ProductCard: React.FC<Props> = ({ product }) => {
+
+    const Item = styled(Paper)(({ theme }) => ({
+        backgroundColor: '#fff',
+        ...theme.typography.body2,
+        padding: theme.spacing(2),
+        textAlign: 'center',
+        color: theme.palette.text.secondary,
+        ...theme.applyStyles('dark', {
+            backgroundColor: '#1A2027',
+        }),
+    }));
 
     const dispatch = useDispatch<AppDispatch>();
     const { enqueueSnackbar, closeSnackbar } = useSnackbar()
@@ -21,14 +32,36 @@ const ProductCard: React.FC<Props> =({ product })=> {
         enqueueSnackbar('Product Is Added To Cart...!');
     }
     return <>
-            <Card>
+
+        <Card sx={{ maxWidth: 345 }}>
+            <CardActionArea>
+                <CardMedia
+                    component="img"
+                    image={require('../../assets/images/product.jpeg')}
+                    alt="green iguana"
+                />
+
                 <CardContent>
-                    <Typography>{product.title}</Typography>
-                    <Typography>{product.price}</Typography>
-                    <Button onClick={handleAddToCart}>Add To Cart</Button>
+                    {/* <Link to={`/products/${product.id}`}> */}
+                    <Typography gutterBottom variant="h5" component="div">
+                        {product.title}
+                    </Typography>
+                    {/* </Link> */}
+                    <Typography variant="body2" sx={{ color: 'text.secondary' }}>
+                        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                    </Typography>
+                    <Typography variant="button" gutterBottom sx={{ display: 'block' }}>
+                        Price: {product.price}
+                    </Typography>
                 </CardContent>
-            </Card>
-        </>
-} 
+            </CardActionArea>
+            <CardActions>
+                <Button size="small" color="primary" variant="contained" onClick={handleAddToCart}>
+                    Add to cart
+                </Button>
+            </CardActions>
+        </Card>
+    </>
+}
 
 export default ProductCard;
