@@ -1,4 +1,4 @@
-import { Button, Card, CardActionArea, CardActions, CardContent, CardMedia, Grid2, Link, Paper, styled, Typography } from "@mui/material";
+import { Button, Card, CardActions, CardContent, CardMedia, Paper, styled, Typography } from "@mui/material";
 import { ProductType } from "../../types/ProductType";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "../../store/store";
@@ -29,16 +29,18 @@ const ProductCard: React.FC<Props> = ({ product }) => {
         //1. dispatch the Add to Cart Action
         //console.log(product);
         dispatch(addToCart(product));
-        enqueueSnackbar('Product Is Added To Cart...!');
+        enqueueSnackbar('Product Is Added To Cart...!', { variant: "success" });
     }
     return <>
 
         <Card sx={{ maxWidth: 345 }}>
-            <CardActionArea>
                 <CardMedia
                     component="img"
-                    image={require('../../assets/images/Icecream.jpg')}
+                    image={require(`../../assets/images/${product.type}.png`)}
                     alt="green iguana"
+                    onClick={()=> {
+                        //`/products/${product.id}`
+                    } }
                 />
 
                 <CardContent>
@@ -54,7 +56,6 @@ const ProductCard: React.FC<Props> = ({ product }) => {
                         Price: {product.price}
                     </Typography>
                 </CardContent>
-            </CardActionArea>
             <CardActions>
                 <Button size="small" color="primary" variant="contained" onClick={handleAddToCart}>
                     Add to cart

@@ -17,7 +17,7 @@ import ProductList from "../ProductsList/ProductsList";
 const Home = (props: any) => {
   return (
     <>
-      <h1>Hello, Welcome To ReactJS...!</h1>
+      <h1>Hello, Welcome To Ice Cream Shop Application...!</h1>
       <br></br>
       <ProductList></ProductList>
     </>

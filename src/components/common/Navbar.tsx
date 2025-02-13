@@ -56,6 +56,14 @@ export default function NavBar() {
             Ice Cream Shop
           </Typography>
 
+          <IconButton onClick={() => navigate("/cart")}>
+                <ShoppingCartIcon fontSize="small" />
+                <CartBadge
+                  badgeContent={cartItemCount}
+                  color="primary"
+                  overlap="circular"
+                />
+              </IconButton>
           {!isAuthenticated ? (
             <>
               {/* <NavLink to={"/login"} style={navStyleFn}>
@@ -73,14 +81,6 @@ export default function NavBar() {
             </>
           ) : (
             <>
-              <IconButton onClick={() => navigate("/cart")}>
-                <ShoppingCartIcon fontSize="small" />
-                <CartBadge
-                  badgeContent={cartItemCount}
-                  color="primary"
-                  overlap="circular"
-                />
-              </IconButton>
               <Button color="inherit" component={Link} to="/profile">
                 Profile
               </Button>

@@ -34,7 +34,7 @@ const Login: React.FC = () => {
     //username and password => JWT Token 
     //Profile
     login('login');
-    navigate('/profile');
+    navigate('/');
   }
 
   const clearErrors = () => {
