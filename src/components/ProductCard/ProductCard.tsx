@@ -37,7 +37,7 @@ const ProductCard: React.FC<Props> = ({ product }) => {
             <CardActionArea>
                 <CardMedia
                     component="img"
-                    image={require('../../assets/images/product.jpeg')}
+                    image={require('../../assets/images/Icecream.jpg')}
                     alt="green iguana"
                 />
 
