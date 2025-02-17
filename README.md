@@ -51,3 +51,10 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 // Add Reducers AddItemToCart, RemoveItemFromCart
 // Add Actions AddItemToCart, RemoveItemFromCart
 // Reducer need to register in store
+
+
+/// Assignment : Update Cart Items 
+// 1. 2 Buttons IncrItem, DecItem
+// 2. New Actions IncrItemAction, DecItemAction
+// 3. IncrItemAction, DecItemAction = ProductID
+// 4. Make sure Total Prices is updating according to incr and decr. 

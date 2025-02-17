@@ -20,23 +20,21 @@ const CartList: React.FC = () => {
     <>
       <Grid
         container
-        spacing={{ xs: 1, md: 2 }}
-        columns={{ xs: 4, sm: 8, md: 12 }}
+        direction={"column"}
       >
         <Typography gutterBottom variant="h5" component="div">
           {totalCount} item{totalCount > 1 ? "s" : ""}
         </Typography>
-        {cartListItems?.map((product) => {
+        {cartListItems?.map((product : ProductType ) => {
           return (
             <>
               <CartCard key={product.id} product={product} />
             </>
           );
         })}
-         <Typography gutterBottom variant="h5" component="div">
-          Total Price :  {totalPrice} 
+        <Typography gutterBottom variant="h5" component="div">
+          Total Price : {totalPrice}
         </Typography>
-
       </Grid>
     </>
   );
