@@ -33,7 +33,8 @@ const Login: React.FC = () => {
 
     //username and password => JWT Token 
     //Profile
-    login('login');
+    //login('login');
+    login({ email: email, password: password});
     navigate('/');
   }
 
