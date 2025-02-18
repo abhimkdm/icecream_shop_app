@@ -3,4 +3,5 @@ export interface ProductType {
     title: string;
     price: number;
     type: string;
+    cartQuantity: number
 }
