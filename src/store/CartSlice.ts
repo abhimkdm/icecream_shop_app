@@ -2,6 +2,7 @@
 //2. CateState Interface
 //3. Create Slice
 
+import { act } from "react";
 import { ProductType } from "../types/ProductType";
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
@@ -10,7 +11,7 @@ interface CartState {
 }
 
 const initialState: CartState = {
-    items: []
+    items: [],
 }; 
 
 const cartSlice = createSlice({
@@ -18,15 +19,37 @@ const cartSlice = createSlice({
     initialState,
     reducers: {
         addToCart: (state : any, action: PayloadAction<ProductType>) => {
-            state.items.push(action.payload);
+            //state.items.push(action.payload);
+            state.items.push({...action.payload, cartQuantity : 1});
         },
+
         removeFromCart: (state, action: PayloadAction<number>) =>{
             state.items = state.items.filter(item => item.id !== action.payload);
-        } 
+        },
+
+        incrementProductQty: (state, action: PayloadAction<ProductType>) => {
+            const itemIndex = state.items.findIndex( item => item.id === action.payload.id);
+            console.log("itemIndex : " +itemIndex);
+            if(itemIndex >= 0) {
+                state.items[itemIndex].cartQuantity += 1;
+            } else {
+                const tempProduct = {...action.payload, cartQuantity : 1}
+                state.items.push(tempProduct);
+            }
+        },
+
+        decrementProductQty: (state, action: PayloadAction<ProductType>) => {
+          const itemIndex = state.items.findIndex(item => item.id === action.payload.id);
+          if(state.items[itemIndex].cartQuantity > 1) {
+            state.items[itemIndex].cartQuantity -= 1;
+          } else if (state.items[itemIndex].cartQuantity === 1){
+            state.items = state.items.filter(item => item.id !== action.payload.id);
+          }
+        }
     }
 });
 
-export const { addToCart, removeFromCart } = cartSlice.actions;
+export const { addToCart, removeFromCart, incrementProductQty, decrementProductQty } = cartSlice.actions;
 export default cartSlice.reducer;
 
 // addToCart : state.items = [{ "id": 1, "title": "Chocolate Ice Cream", "price": 50 }, 
