@@ -2,8 +2,8 @@ import { useSelector } from "react-redux";
 import { RootState } from "../../store/store";
 import CartCard from "../CartCard/CartCard";
 import Grid from "@mui/material/Grid2";
-import { ProductType } from "../../types/ProductType";
 import { Divider, Paper, styled, Typography } from "@mui/material";
+import { CartItemType } from "../../types/CartItemType";
 
 const CartList: React.FC = () => {
   const Item = styled(Paper)(({ theme }) => ({
@@ -18,8 +18,8 @@ const CartList: React.FC = () => {
   }));
   const cartListItems = useSelector((state: RootState) => state.cart.items);
 
-  const calCulatePrice = (sum: number, item: ProductType) => {
-    return sum + item.price * item.cartQuantity;
+  const calCulatePrice = (sum: number, item: CartItemType) => {
+    return sum + item.product.price * item.cartQuantity;
   };
 
   //Calculate Length
@@ -35,10 +35,10 @@ const CartList: React.FC = () => {
               {totalCount} item{totalCount > 1 ? "s" : ""}
             </Typography>
 
-            {cartListItems?.map((product: ProductType) => {
+            {cartListItems?.map((cartItem: CartItemType) => {
               return (
                 <>
-                  <CartCard key={product.id} product={product} />
+                  <CartCard key={cartItem.product.id} cartItem={cartItem} />
                 </>
               );
             })}

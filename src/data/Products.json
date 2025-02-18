@@ -1,5 +1,20 @@
 [
-    { "id": 1, "title": "Chocolate Ice Cream", "price": 50, "type": "chocolate", "cartQuantity": 0 },
-    { "id": 2, "title": "Vanilla Ice Cream", "price": 60, "type": "vanilla", "cartQuantity": 0 },
-    { "id": 3, "title": "Mango Ice Cream", "price": 70, "type": "mango", "cartQuantity": 0 }
+    {
+        "id": 1,
+        "title": "Chocolate Ice Cream",
+        "price": 50,
+        "type": "chocolate"
+    },
+    {
+        "id": 2,
+        "title": "Vanilla Ice Cream",
+        "price": 60,
+        "type": "vanilla"
+    },
+    {
+        "id": 3,
+        "title": "Mango Ice Cream",
+        "price": 70,
+        "type": "mango"
+    }
 ]

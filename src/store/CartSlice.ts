@@ -2,57 +2,79 @@
 //2. CateState Interface
 //3. Create Slice
 
-import { act } from "react";
+import { CartItemType } from "../types/CartItemType";
 import { ProductType } from "../types/ProductType";
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
 interface CartState {
-    items : ProductType[];
+  items: CartItemType[];
 }
 
 const initialState: CartState = {
-    items: [],
-}; 
+  items: [],
+};
 
 const cartSlice = createSlice({
-    name: "cart",
-    initialState,
-    reducers: {
-        addToCart: (state : any, action: PayloadAction<ProductType>) => {
-            //state.items.push(action.payload);
-            state.items.push({...action.payload, cartQuantity : 1});
-        },
+  name: "cart",
+  initialState,
+  reducers: {
+    addToCart: (state: any, action: PayloadAction<ProductType>) => {
+      //state.items.push(action.payload);
+      const existingItemIndex = state.items.findIndex(
+        (item: CartItemType) => item.product.id === action.payload.id
+      );
 
-        removeFromCart: (state, action: PayloadAction<number>) =>{
-            state.items = state.items.filter(item => item.id !== action.payload);
-        },
+      if (existingItemIndex >= 0) {
+        state.items[existingItemIndex].cartQuantity += 1;
+      } else {
+        state.items.push({ product: action.payload, cartQuantity: 1 });
+      }
+    },
 
-        incrementProductQty: (state, action: PayloadAction<ProductType>) => {
-            const itemIndex = state.items.findIndex( item => item.id === action.payload.id);
-            console.log("itemIndex : " +itemIndex);
-            if(itemIndex >= 0) {
-                state.items[itemIndex].cartQuantity += 1;
-            } else {
-                const tempProduct = {...action.payload, cartQuantity : 1}
-                state.items.push(tempProduct);
-            }
-        },
+    removeFromCart: (state, action: PayloadAction<number>) => {
+      state.items = state.items.filter(
+        (item) => item.product.id !== action.payload
+      );
+    },
 
-        decrementProductQty: (state, action: PayloadAction<ProductType>) => {
-          const itemIndex = state.items.findIndex(item => item.id === action.payload.id);
-          if(state.items[itemIndex].cartQuantity > 1) {
-            state.items[itemIndex].cartQuantity -= 1;
-          } else if (state.items[itemIndex].cartQuantity === 1){
-            state.items = state.items.filter(item => item.id !== action.payload.id);
-          }
-        }
-    }
+    incrementProductQty: (state, action: PayloadAction<ProductType>) => {
+      const itemIndex = state.items.findIndex(
+        (item) => item.product.id === action.payload.id
+      );
+      console.log("itemIndex : " + itemIndex);
+      if (itemIndex >= 0) {
+        state.items[itemIndex].cartQuantity += 1;
+      } else {
+        //const tempProduct = {...action.payload, cartQuantity : 1}
+        //product { cartQuantity: 0}
+        state.items.push({ product: action.payload, cartQuantity: 1 });
+      }
+    },
+
+    decrementProductQty: (state, action: PayloadAction<ProductType>) => {
+      const itemIndex = state.items.findIndex(
+        (item) => item.product.id === action.payload.id
+      );
+      if (state.items[itemIndex].cartQuantity > 1) {
+        state.items[itemIndex].cartQuantity -= 1;
+      } else if (state.items[itemIndex].cartQuantity === 1) {
+        state.items = state.items.filter(
+          (item) => item.product.id !== action.payload.id
+        );
+      }
+    },
+  },
 });
 
-export const { addToCart, removeFromCart, incrementProductQty, decrementProductQty } = cartSlice.actions;
+export const {
+  addToCart,
+  removeFromCart,
+  incrementProductQty,
+  decrementProductQty,
+} = cartSlice.actions;
 export default cartSlice.reducer;
 
-// addToCart : state.items = [{ "id": 1, "title": "Chocolate Ice Cream", "price": 50 }, 
+// addToCart : state.items = [{ "id": 1, "title": "Chocolate Ice Cream", "price": 50 },
 //                              { "id": 2, "title": "Vanilla Ice Cream", "price": 60 }]
-// removeFromCart : id = 1; 
+// removeFromCart : id = 1;
 //  state.items = [{ "id": 2, "title": "Vanilla Ice Cream", "price": 60 }]
