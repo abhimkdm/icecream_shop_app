@@ -13,6 +13,7 @@ import { AuthProvider } from "./components/Auth/AuthProvider/AuthProvider";
 import PrivateRoute from "./components/Auth/PrivateRoute/PrivateRoute";
 import { SnackbarProvider } from "notistack";
 import Cart from "./components/Cart/Cart";
+import CheckOut from "./components/CheckOut/CheckOut";
 
 const App: React.FC = () => {
   return (
@@ -30,9 +31,11 @@ const App: React.FC = () => {
               </Route>
               <Route element={<PrivateRoute />}>
                 <Route path="/profile" element={<Profile />} />
+                <Route path="/checkout" element={<CheckOut />}></Route>
               </Route>
               <Route path="*" element={<NoMatch />}></Route>
               <Route path="/cart" element={<Cart />}></Route>
+              
             </Routes>
           </Router>
         </SnackbarProvider>

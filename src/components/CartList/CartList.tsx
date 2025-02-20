@@ -2,24 +2,22 @@ import { useSelector } from "react-redux";
 import { RootState } from "../../store/store";
 import CartCard from "../CartCard/CartCard";
 import Grid from "@mui/material/Grid2";
-import { Divider, Paper, styled, Typography } from "@mui/material";
+import { Button, Divider, Typography } from "@mui/material";
 import { CartItemType } from "../../types/CartItemType";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../Auth/AuthProvider/AuthProvider";
 
 const CartList: React.FC = () => {
-  const Item = styled(Paper)(({ theme }) => ({
-    backgroundColor: '#fff',
-    ...theme.typography.body2,
-    padding: theme.spacing(1),
-    textAlign: 'center',
-    color: theme.palette.text.secondary,
-    ...theme.applyStyles('dark', {
-      backgroundColor: '#1A2027',
-    }),
-  }));
   const cartListItems = useSelector((state: RootState) => state.cart.items);
+  const navigate = useNavigate();
+  const { isAuthenticated } = useAuth();
 
   const calCulatePrice = (sum: number, item: CartItemType) => {
     return sum + item.product.price * item.cartQuantity;
+  };
+
+  const handleRedirectToCheckOut = () => {
+    isAuthenticated ? navigate("/checkout") : navigate("/login");
   };
 
   //Calculate Length
@@ -30,28 +28,27 @@ const CartList: React.FC = () => {
     <>
       <Grid container spacing={2}>
         <Grid size={{ xs: 5, md: 7 }}>
-          {/* <Item> */}
-            <Typography gutterBottom variant="h5" component="div">
-              {totalCount} item{totalCount > 1 ? "s" : ""}
-            </Typography>
+          <Typography gutterBottom variant="h5" component="div">
+            {totalCount} item{totalCount > 1 ? "s" : ""}
+          </Typography>
 
-            {cartListItems?.map((cartItem: CartItemType) => {
-              return (
-                <>
-                  <CartCard key={cartItem.product.id} cartItem={cartItem} />
-                </>
-              );
-            })}
-
-          {/* </Item> */}
+          {cartListItems?.map((cartItem: CartItemType) => {
+            return (
+              <>
+                <CartCard key={cartItem.product.id} cartItem={cartItem} />
+              </>
+            );
+          })}
         </Grid>
         <Divider orientation="vertical" flexItem />
         <Grid size={{ xs: 6, md: 4 }}>
-          {/* <Item> */}
-            <Typography gutterBottom variant="h5" component="div">
-              Total Price : {totalPrice}
-            </Typography>
-          {/* </Item> */}
+          <Typography gutterBottom variant="h5" component="div">
+            Total Price : {totalPrice}
+          </Typography>
+
+          <Button variant="contained" onClick={handleRedirectToCheckOut}>
+            Proceed to checkout
+          </Button>
         </Grid>
       </Grid>
     </>

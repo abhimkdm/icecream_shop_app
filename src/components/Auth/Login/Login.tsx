@@ -1,6 +1,10 @@
 import { Container, TextField, Typography, Button, Box } from "@mui/material";
 import React, { useState } from "react";
-import { _IsValidEmail, _IsValidPass, errorMessages } from "../../../helpers/Validations";
+import {
+  _IsValidEmail,
+  _IsValidPass,
+  errorMessages,
+} from "../../../helpers/Validations";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../AuthProvider/AuthProvider";
 
@@ -10,9 +14,9 @@ const Login: React.FC = () => {
   const [emailErr, setEmailErr] = useState<string>("");
   const [passwordErr, setPasswordErr] = useState<string>("");
   const navigate = useNavigate();
-  const { login } = useAuth(); 
+  const { login } = useAuth();
 
-  //Event 
+  //Event
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
 
@@ -21,8 +25,8 @@ const Login: React.FC = () => {
     //Set the error messages
     const errors = {
       email: !_IsValidEmail(email) ? errorMessages.email : "",
-      password: !_IsValidPass(password) ? errorMessages.password : ""
-    }
+      password: !_IsValidPass(password) ? errorMessages.password : "",
+    };
 
     //Login Form validations
     if (errors.email || errors.password) {
@@ -31,18 +35,18 @@ const Login: React.FC = () => {
       return;
     }
 
-    //username and password => JWT Token 
+    //username and password => JWT Token
     //Profile
     //login('login');
-    login({ email: email, password: password});
-    navigate('/');
-  }
+    login({ email: email, password: password });
+    navigate("/");
+  };
 
   const clearErrors = () => {
     //Reset error messages
     setEmailErr("");
     setPasswordErr("");
-  }
+  };
 
   return (
     <>
@@ -68,7 +72,7 @@ const Login: React.FC = () => {
               margin="normal"
               label="Password"
               value={password}
-              onChange={(e : any) => setPassword(e.target.value)}
+              onChange={(e: any) => setPassword(e.target.value)}
               variant="outlined"
               type="password"
               error={!!passwordErr}
@@ -76,6 +80,15 @@ const Login: React.FC = () => {
             />
             <Button type="submit" variant="contained" fullWidth>
               LogIn
+            </Button>
+            <Button
+              type="submit"
+              variant="contained"
+              fullWidth
+              sx={{ marginTop: 2 }}
+              onClick={() => navigate("/signup")}
+            >
+              SignUp
             </Button>
           </form>
         </Box>

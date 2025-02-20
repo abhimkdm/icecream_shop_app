@@ -2,6 +2,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import productReducer from './ProductsSlice';
 import cartReducer from './CartSlice';
 import userReducer from './UserSlice';
+import shippingReducer from './ShippingDetailsSlice';
 
 export const store = configureStore({
     reducer: {
@@ -9,7 +10,8 @@ export const store = configureStore({
         //ProductReducer
         products: productReducer,
         cart: cartReducer,
-        user: userReducer
+        user: userReducer,
+        shipping: shippingReducer
     }
 });
 
