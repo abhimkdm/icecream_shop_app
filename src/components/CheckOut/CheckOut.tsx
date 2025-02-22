@@ -3,6 +3,7 @@ import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid2";
 import { useState } from "react";
 import { _IsValidAddress, _IsValidCity, _IsValidCountry, _IsValidFname, _IsValidState, _IsValidZipcode, errorMessages } from "../../helpers/Validations";
+import { useNavigate } from "react-router-dom";
 
 const CheckOut: React.FC = () => {
     const [fname, setName] = useState<string>("");
@@ -17,6 +18,8 @@ const CheckOut: React.FC = () => {
     const [stateErr, setStateErr] = useState<string>("");
     const [cityErr, setCityErr] = useState<string>("");
     const [zipcodeErr, setZipcodeErr] = useState<string>("");
+
+    const navigate = useNavigate();
 
     const handleShippingForm = (e: React.FormEvent) => {
         e.preventDefault();
@@ -41,6 +44,8 @@ const CheckOut: React.FC = () => {
 
             clearErrors();
         }
+        navigate("/ordersuccess")
+        
     }
 
     const clearErrors = () => {
@@ -136,7 +141,7 @@ const CheckOut: React.FC = () => {
                                 </Select>
                                 <FormHelperText>{stateErr}</FormHelperText>
                             </FormControl>
-                            {/* <FormControl sx={{ m: 1, minWidth: 120 }} variant="standard"> */}
+                            <FormControl sx={{ m: 1, minWidth: 120 }} variant="standard">
                                 <TextField
                                     id="zipcode"
                                     fullWidth
@@ -150,7 +155,7 @@ const CheckOut: React.FC = () => {
                                     error={!!zipcodeErr}
                                     helperText={zipcodeErr}
                                 />
-                            {/* </FormControl> */}
+                            </FormControl>
 
                             <Button type="submit" variant="contained" fullWidth>
                                 Place your order

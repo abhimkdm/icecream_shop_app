@@ -14,6 +14,7 @@ import PrivateRoute from "./components/Auth/PrivateRoute/PrivateRoute";
 import { SnackbarProvider } from "notistack";
 import Cart from "./components/Cart/Cart";
 import CheckOut from "./components/CheckOut/CheckOut";
+import OrderSuccess from "./components/Orders/OrderSuccess";
 
 const App: React.FC = () => {
   return (
@@ -35,7 +36,7 @@ const App: React.FC = () => {
               </Route>
               <Route path="*" element={<NoMatch />}></Route>
               <Route path="/cart" element={<Cart />}></Route>
-              
+              <Route path="/ordersuccess" element={<OrderSuccess />}></Route>
             </Routes>
           </Router>
         </SnackbarProvider>
