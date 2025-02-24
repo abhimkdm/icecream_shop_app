@@ -4,7 +4,12 @@ export const errorMessages = {
     email: "Please enter valid email id",
     password: "Please enter valid password",
     confirmPassword: "Password and confirm password should be same",
-    mobileNo: "Please enter valid mobile number"
+    mobileNo: "Please enter valid mobile number",
+    address: "Please eneter valid address",
+    country: "Please select a country",
+    state: "Please select a state",
+    city: "Please enter valid city",
+    zipcode: "Please enter valid zip code",
 }
 
 //Name validation
@@ -35,4 +40,29 @@ export const _IsValidConfirmPass = (password: string, confirmPassword: string) =
 export const _IsValidMobileNo = (mobileNo: string) => {
     const mobileRegEx =/^[0-9]{10}$/;
     return mobileRegEx.test(mobileNo);
+}
+
+export const _IsValidAddress = (address: string) => {
+    const addressRegEx = /^[a-zA-Z]+$/;
+    return addressRegEx.test(address);
+}
+
+export const _IsValidCountry = (country: string) => {
+    const countryRegEx = /^[a-zA-Z]+$/;
+    return countryRegEx.test(country);
+}
+
+export const _IsValidState = (state: string) => {
+    const stateRegEx = /^[a-zA-Z]+$/;
+    return stateRegEx.test(state);
+}
+
+export const _IsValidCity = (city: string) => {
+    const cityRegEx = /^[a-zA-Z]+$/;
+    return cityRegEx.test(city);
+}
+
+export const _IsValidZipcode = (zipcode: string) => {
+    const zipcodeRegEx =/^[0-9]{10}$/;
+    return zipcodeRegEx.test(zipcode);
 }

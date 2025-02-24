@@ -20,3 +20,12 @@ a.active {
   font-weight:bolder;
   color: brown;
 }
+
+.order-success-msg {
+  font-size: 24px;
+  margin-left: 10px;
+}
+
+.custom-container img {
+  width: 250px;
+}
