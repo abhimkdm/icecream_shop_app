@@ -2,13 +2,13 @@ import { IProduct } from "../interfaces";
 
 //Business Logic
 const fs = require("fs");
-const filePath="./data/Products.json";
+//const filePath="./data/Products.json";
+import productData from "../data/Products.json";
 
 //Read data from file
 const readData = () => {
-    const jsonData = fs.readFileSync(filePath);
-    const data : IProduct[] = JSON.parse(jsonData) as IProduct[];
-    console.table(data);
+    //const jsonData = fs.readFileSync(filePath);
+    const data : IProduct[] = productData as IProduct[];
     return data;
   };
 

@@ -63,6 +63,6 @@ export const _IsValidCity = (city: string) => {
 }
 
 export const _IsValidZipcode = (zipcode: string) => {
-    const zipcodeRegEx =/^[0-9]{10}$/;
+    const zipcodeRegEx =/^[0-9]{6}$/;
     return zipcodeRegEx.test(zipcode);
 }
