@@ -10,12 +10,38 @@ const ProductList: React.FC = () => {
 
   useEffect(() => {
     const fetchProducts = async () => {
-      const productData  = await api.get("/products");
-      //disapatch the products to store in statemanagement.
+      const productData = await api.get("/products");
+      //disapatch the products to store in statemanagement. API1 user API 2 shipping
     };
 
-    fetchProducts();
+    //fetchProducts();
   }, []);
+
+  // const [count, setCount] = useState(0);
+  // const [count1, setCount1] = useState(0);
+
+  //some function increasing val setCount(1);
+
+  //componentDidMount
+  // Loaded
+  // useEffect(() => {}); //Called Rerender component - useState();
+  // useEffect(() => {}, []); //Called only once component is mounted
+  
+  //componentDidUpdate
+  // useEffect(() => {
+  //   /*logic*/
+  //   console.log("Logic");
+  // }, [count, count1]);
+  
+  //getSnapshotBeforeUpdate
+  // useEffect(()=>{
+  //   (prevProps, prevState) => {
+  //       //count =0 
+  //       //count = 1
+  //   }
+  // })
+ 
+
 
   //console.log(products);
 

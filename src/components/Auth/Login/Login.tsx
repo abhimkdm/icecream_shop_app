@@ -1,5 +1,5 @@
 import { Container, TextField, Typography, Button, Box } from "@mui/material";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   _IsValidEmail,
   _IsValidPass,
@@ -47,6 +47,28 @@ const Login: React.FC = () => {
     setEmailErr("");
     setPasswordErr("");
   };
+
+  //componentDidMount
+  useEffect(() => {
+    console.log("Login");
+  }); //Called Rerender component - useState();
+
+  useEffect(() => {
+    console.log("Login Call Once");
+  }, []); //Called only once component is mounted
+
+  //componentDidUpdate
+  useEffect(() => {
+    console.log("Email Validation...!");
+  }, [emailErr]);
+
+  //componentDidUnmount
+  useEffect(() => {
+    return () => {
+      clearErrors();
+      console.log("Login Cleanup");
+    };
+  }, []);
 
   return (
     <>
