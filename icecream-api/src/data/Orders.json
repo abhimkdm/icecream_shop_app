@@ -1,0 +1,86 @@
+[
+    {
+        "id": 1,
+        "cartItems": [
+            {
+                "id": 1,
+                "product": [
+                    {
+                        "id": 1,
+                        "title": "Chacolate Ice Cream",
+                        "price": 50,
+                        "type": "Chacolate"
+                    }
+                ],
+                "cartQuantity": 2
+            }
+        ],
+        "user": {
+            "id": 1,
+            "name": "Amaresh",
+            "email": "amaresh@gmail.com",
+            "password": "admin",
+            "mobileno": 9611538528
+        },
+        "ShippingDetails": {
+            "id": 1,
+            "name": "Amaresh",
+            "address": "Bevoor",
+            "country": "India",
+            "state": "Karnataka",
+            "city": "Koppal",
+            "pincode": 583237
+        },
+        "orderDate": "28-02-2025",
+        "status": "ordered",
+        "totalPrice": 100
+    },
+    {
+        "id": 2,
+        "cartItems": [
+            {
+                "id": 1,
+                "product": [
+                    {
+                        "id": 1,
+                        "title": "Chacolate Ice Cream",
+                        "price": 50,
+                        "type": "Chacolate"
+                    }
+                ],
+                "cartQuantity": 2
+            },
+            {
+                "id": 3,
+                "product": [
+                    {
+                        "id": 3,
+                        "title": "Mango Ice Cream",
+                        "price": 70,
+                        "type": "Mango"
+                    }
+                ],
+                "cartQuantity": 3
+            }
+        ],
+        "user": {
+            "id": 2,
+            "name": "Abhishekh",
+            "email": "abhishek@gmail.com",
+            "password": "admin1",
+            "mobileno": 9876543210
+        },
+        "ShippingDetails": {
+            "id": 2,
+            "name": "Vivek",
+            "address": "Upkar Layout",
+            "country": "India",
+            "state": "Karnataka",
+            "city": "Bangalore",
+            "pincode": 560091
+        },
+        "orderDate": "28-02-2025",
+        "status": "ordered",
+        "totalPrice": 310
+    }
+]
