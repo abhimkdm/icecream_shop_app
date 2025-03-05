@@ -1,0 +1,20 @@
+[
+    {
+        "id":1,
+        "name":"Amaresh",
+        "address":"Bevoor",
+        "country":"India",
+        "state": "Karnataka",
+        "city": "Koppal",
+        "pincode": 583237
+    },
+    {
+        "id":2,
+        "name":"Vivek",
+        "address":"Upkar Layout",
+        "country":"India",
+        "state": "Karnataka",
+        "city": "Bangalore",
+        "pincode": 560091
+    }
+]

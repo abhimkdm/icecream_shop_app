@@ -1,0 +1,16 @@
+[
+    {
+        "id": 1,
+        "name": "Amaresh",
+        "email": "amaresh@gmail.com",
+        "password": "admin",
+        "mobileno": 9611538528
+    },
+    {
+        "id": 2,
+        "name": "Abhishekh",
+        "email": "abhishek@gmail.com",
+        "password": "admin1",
+        "mobileno": 9876543210
+    }
+]
