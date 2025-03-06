@@ -1,6 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { ProductType } from '../types/ProductType';
-import productData from '../data/Products.json';
 
 //1. Define the Products Type
 //2. Import the static data
@@ -10,7 +9,7 @@ interface ProductState {
 
 //3. initialize state
 const initialState: ProductState = {
-    items : productData
+    items : []
 }
 
 //4. Create Slice

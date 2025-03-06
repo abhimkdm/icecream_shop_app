@@ -6,6 +6,7 @@ import { Button, Divider, Typography } from "@mui/material";
 import { CartItemType } from "../../types/CartItemType";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../Auth/AuthProvider/AuthProvider";
+import { useMemo } from "react";
 
 const CartList: React.FC = () => {
   const cartListItems = useSelector((state: RootState) => state.cart.items);
@@ -16,12 +17,18 @@ const CartList: React.FC = () => {
     return sum + item.product.price * item.cartQuantity;
   };
 
-  const handleRedirectToCheckOut = () => {
+  const handleRedirectToCheckOut = useMemo(() => {
     isAuthenticated ? navigate("/checkout") : navigate("/login");
-  };
+  }, [isAuthenticated]);
+
+  console.log("Cart List");
 
   //Calculate Length
   const totalCount = cartListItems.length;
+  // useMemo(() => {
+  //   console.log("Total Price");
+   
+  // }, [cartListItems]);
   const totalPrice = cartListItems.reduce(calCulatePrice, 0);
 
   return (
@@ -46,7 +53,7 @@ const CartList: React.FC = () => {
             Total Price : {totalPrice}
           </Typography>
 
-          <Button variant="contained" onClick={handleRedirectToCheckOut}>
+          <Button variant="contained" onClick={() => handleRedirectToCheckOut}>
             Proceed to checkout
           </Button>
         </Grid>

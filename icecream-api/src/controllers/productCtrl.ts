@@ -4,8 +4,8 @@ import { IProduct } from "../interfaces";
 
 const productService = require("../services/products");
 
-exports.getProducts = (req : any , res : any)=> {
-    const productList: IProduct[] = productService.getProducts();
+exports.getProducts = async (req : any , res : any)=> {
+    const productList: IProduct[] = await productService.fetchProducts();
     res.send(productList);
 }
 

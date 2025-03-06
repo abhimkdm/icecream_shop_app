@@ -11,10 +11,11 @@ const ProductList: React.FC = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       const productData = await api.get("/products");
+      console.table(productData.data);
       //disapatch the products to store in statemanagement. API1 user API 2 shipping
     };
 
-    //fetchProducts();
+    fetchProducts();
   }, []);
 
   // const [count, setCount] = useState(0);
