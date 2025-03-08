@@ -1,17 +1,16 @@
 import { Button, ButtonGroup, CardMedia, Typography } from "@mui/material";
-import { useDispatch } from "react-redux";
-import { AppDispatch } from "../../store/store";
 import { decrementProductQty, incrementProductQty, removeFromCart } from "../../store/CartSlice";
 import { useSnackbar } from "notistack";
 import Box from "@mui/material/Box";
 import { CartItemType } from "../../types/CartItemType";
+import { useAppDispatch } from "../../store/hooks";
 
 interface Props {
   cartItem: CartItemType;
 }
 
 const CartCard: React.FC<Props> = ({ cartItem }) => {
-  const dispatch = useDispatch<AppDispatch>();
+  const dispatch= useAppDispatch()
   const { enqueueSnackbar, closeSnackbar } = useSnackbar();
 
   const handleRemove = () => {

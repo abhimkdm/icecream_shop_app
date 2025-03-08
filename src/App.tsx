@@ -15,6 +15,7 @@ import { SnackbarProvider } from "notistack";
 import Cart from "./components/Cart/Cart";
 import CheckOut from "./components/CheckOut/CheckOut";
 import OrderSuccess from "./components/Orders/OrderSuccess";
+import MemoExample from "./components/Examples/MemoExample";
 
 const App: React.FC = () => {
   return (
@@ -37,6 +38,7 @@ const App: React.FC = () => {
               <Route path="*" element={<NoMatch />}></Route>
               <Route path="/cart" element={<Cart />}></Route>
               <Route path="/ordersuccess" element={<OrderSuccess />}></Route>
+              <Route path="/memo" element={<MemoExample />}></Route>
             </Routes>
           </Router>
         </SnackbarProvider>
